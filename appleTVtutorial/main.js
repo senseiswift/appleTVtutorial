@@ -12,22 +12,48 @@ function pushDoc(document) {
 }
 
 App.onLaunch = function(options) {
-    alert();
+    
+    firstAlert()
+    
 }
 
 App.onExit = function() {
     console.log('App finished');
 }
 
-function alert() {
-    var alertXMLString =
-    `<?xml version="1.0" encoding="UTF-8" ?>
-    <document>
-        <alertTemplate>
-            <title>Hello AppleTV!</title>
-        </alertTemplate>
-    </document>`
+var firstXMLString =
+`<?xml version="1.0" encoding="UTF-8" ?>
+<document>
+<alertTemplate>
+<title>Hello AppleTV!</title>
+<button>
+<text>Hello!</text> // ボタンタグでボタンをセットします
+</button>
+</alertTemplate>
+</document>`
+
+var secondXMLString =
+`<?xml version="1.0" encoding="UTF-8" ?>
+<document>
+<alertTemplate>
+<title>Bye AppleTV!</title>
+<button>
+<text>Bye!</text>
+</button>
+</alertTemplate>
+</document>`
+
+function firstAlert() {
+    
+    function showSecondXML() {
+        var parser = new DOMParser();
+        var alertDOMElement = parser.parseFromString(secondXMLString, "application/xml");
+        alertDOMElement.addEventListener("select", function(){firstAlert();}, false);
+        navigationDocument.presentModal(alertDOMElement);
+    }
+    
     var parser = new DOMParser();
-    var alertDOMElement = parser.parseFromString(alertXMLString, "application/xml");
+    var alertDOMElement = parser.parseFromString(firstXMLString, "application/xml");
+    alertDOMElement.addEventListener("select", showSecondXML, false);
     navigationDocument.presentModal(alertDOMElement);
 }
