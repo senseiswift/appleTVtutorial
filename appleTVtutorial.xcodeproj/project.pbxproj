@@ -379,6 +379,7 @@
 				FF93A6431BA3C28D00352972 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FF93A6441BA3C28D00352972 /* Build configuration list for PBXNativeTarget "appleTVtutorialTests" */ = {
 			isa = XCConfigurationList;
@@ -387,6 +388,7 @@
 				FF93A6461BA3C28D00352972 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

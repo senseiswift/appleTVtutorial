@@ -13,7 +13,7 @@ function pushDoc(document) {
 
 App.onLaunch = function(options) {
     
-    firstAlert()
+    pushFirstXML()
     
 }
 
@@ -57,3 +57,20 @@ function firstAlert() {
     alertDOMElement.addEventListener("select", showSecondXML, false);
     navigationDocument.presentModal(alertDOMElement);
 }
+
+
+function pushFirstXML() {
+    
+    function pushSecondXML() {
+        var parser = new DOMParser();
+        var alertDOMElement = parser.parseFromString(secondXMLString, "application/xml");
+        alertDOMElement.addEventListener("select", function(){navigationDocument.popDocument();}, false);
+        navigationDocument.pushDocument(alertDOMElement);
+    }
+    
+    var parser = new DOMParser();
+    var alertDOMElement = parser.parseFromString(firstXMLString, "application/xml");
+    alertDOMElement.addEventListener("select", pushSecondXML, false);
+    navigationDocument.pushDocument(alertDOMElement);
+}
+
