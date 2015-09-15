@@ -24,12 +24,18 @@ App.onExit = function() {
 var firstXMLString =
 `<?xml version="1.0" encoding="UTF-8" ?>
 <document>
-<alertTemplate>
-<title>Hello AppleTV!</title>
+<formTemplate>
+<banner>
+<img src="http://localhost:8000/title.png" width="800" height="400"/>
+<description>Enter Password</description>
+</banner>
+<textField>hirakegoma</textField>
+<footer>
 <button>
-<text>Hello!</text> // ボタンタグでボタンをセットします
+<text>Submit</text>
 </button>
-</alertTemplate>
+</footer>
+</formTemplate>
 </document>`
 
 var secondXMLString =
